@@ -324,3 +324,52 @@ labelBalance.addEventListener("click", function () {
 
 // 另一种写法：先用展开运算符转成数组，再处理
 const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+
+//Array Methods Practice
+//1.
+const bankDepositSum = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((mov) => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
+
+//2.
+// 方法 1：使用 flatMap + filter + length
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+// 方法 2：使用 flatMap + reduce（推荐）
+const numDeposits1000 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+//或者写成++count 不能写成count++
+console.log(numDeposits1000);
+
+//3.
+const sums = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce(
+    (sums, cur) =>
+      cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur),
+    { deposits: 0, withdrawals: 0 }
+  );
+// sums[cur>0?'deposits':'withdeawals']+=cur return sums;,{ deposits: 0, withdrawals: 0 }
+console.log(deposits, withdrawals);
+
+//4.
+const convertTitleCase = function (title) {
+  const exceptions = ["a", "an", "the", "but", "or", "on", "in", "with"];
+  const titleCase = title
+    .toLowerCase()
+    .split(" ")
+    .map((word) =>
+      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    );
+  return titleCase;
+};
+
+console.log(convertTitleCase("this is a nice title"));
+console.log(convertTitleCase("this is a LONG title but not too long"));
+console.log(convertTitleCase("and here is another title with an EXAMPLE"));
