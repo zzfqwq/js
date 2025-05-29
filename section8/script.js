@@ -185,3 +185,20 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
   if (el !== h1) el.style.transform = "scale(0.5)";
 });
+
+// 当 HTML 解析完毕、DOM 树构建完成后触发（不等待图片、CSS等资源加载）
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("HTML parsed and DOM tree built!", e);
+});
+
+// 当页面所有资源（包括图片、CSS、iframe等）完全加载完成后触发
+window.addEventListener("load", function (e) {
+  console.log("Page fully loaded", e);
+});
+
+// 当用户即将离开页面（关闭、刷新、跳转）时触发（常用于弹窗确认）
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault(); // 某些浏览器需要这一句才能触发提示
+//   console.log(e);
+//   e.returnValue = ''; // 显示浏览器默认离开确认弹窗
+// });
