@@ -1,16 +1,16 @@
 {
-  "name": "js",
+  "name": "forkify",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Recipe application",
   "scripts": {
+    "start": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zzfqwq/js.git"
   },
-  "author": "",
+  "author": "Zhifei Zhao",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zzfqwq/js/issues"
@@ -21,6 +21,8 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.2",
     "parcel": "^2.15.2"
-  }
+  },
+  "main": "index.js"
 }
